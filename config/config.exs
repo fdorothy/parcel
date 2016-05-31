@@ -28,3 +28,10 @@ use Mix.Config
 # here (which is why it is important to import them last).
 #
 #     import_config "#{Mix.env}.exs"
+
+config :parcel,
+  defaults: [
+    max_page_size: 20,
+    per_page: 10,
+    page: 0
+  ]
