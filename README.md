@@ -2,7 +2,7 @@
 
 Elixir-based pagination on enumerable types.
 
-There are other packages available for pagination. Many packages work on a database backend, such as Ecto. Parcel paginates Elixir enumerables, which means it can work in situations where there is no database backing or you need to combine data from multiple queries or sources.
+There are other packages available for pagination. Many packages work on a database backend, such as Ecto. Parcel paginates Elixir enumerables, which means it can work in situations where there is no database backing or it is not convenient to write a single database query.
 
 ## Installation
 
