@@ -28,6 +28,19 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 defmodule Parcel do
+  @moduledoc ~S"""
+  Elixir-based pagination on enumerable types.
+
+  iex(1)> Parcel.paginate(1..100, [page: 1, page_size: 10])
+  %Parcel{items: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], page: 1, page_size: 10,
+  total_items: 100, total_pages: 10}
+
+  If you do not pass in a page size it will use the default value in the configuration.
+
+  iex(2)> Parcel.paginate(1..100, [page: 1])
+  %Parcel{items: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], page: 1, page_size: 10,
+  total_items: 100, total_pages: 10}
+  """
   defstruct [:items, :page, :page_size, :total_pages, :total_items]
 
   @type t :: %Parcel {
@@ -38,6 +51,9 @@ defmodule Parcel do
     total_items: integer
   }
 
+  @type params_t :: [page: integer, page_size: integer]
+
+  @spec paginate(list, params_t) :: t
   def paginate(items, params) do
     config = Application.get_env(:parcel, :defaults)
     paginate(
