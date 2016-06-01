@@ -52,7 +52,7 @@ defmodule Parcel do
 
   defp paginate(items, page, page_size) do
     total_items = Enum.count(items)
-    total_pages = Enum.max([1, ceil(total_items / page_size)])
+    total_pages = :erlang.max(1, ceil(total_items / page_size))
     page = clamp(page, 1, total_pages)
     offset = (page-1)*page_size
     page_items = Enum.slice(items, offset, page_size)
@@ -66,5 +66,5 @@ defmodule Parcel do
   end
 
   defp ceil(x), do: Kernel.trunc(Float.ceil(x))
-  defp clamp(x, a, b), do: Enum.min([Enum.max([x, a]), b])
+  defp clamp(x, a, b), do: :erlang.min(:erlang.max(x, a), b)
 end
