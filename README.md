@@ -1,6 +1,6 @@
 # Parcel
 
-Elixir based pagination plug for Maru
+Elixir-based pagination on enumerable types.
 
 ## Installation
 
