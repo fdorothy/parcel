@@ -6,7 +6,7 @@ Why is this needed when there are already packages available for slicing data in
 
 ## Installation
 
-Parcel is just one file. Everything you need is contained within lib/parcel.ex. Copy this lib/parcel.ex into your project, configure and enjoy.
+Parcel is just one file. Everything you need is contained within lib/parcel.ex. Copy lib/parcel.ex into your project, configure and enjoy.
 
 ## Configuration
 
