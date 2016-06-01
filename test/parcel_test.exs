@@ -2,11 +2,11 @@ defmodule ParcelTest do
   use ExUnit.Case
 
   def query(items, params) do
-    Parcel.Pagination.paginate(items, params)
+    Parcel.paginate(items, params)
   end
 
   def check(items, page, page_size, expected_items, expected_total_pages) do
-    assert %Parcel.Pagination {
+    assert %Parcel {
       items: Enum.to_list(expected_items),
       page: page,
       page_size: page_size,
@@ -27,7 +27,7 @@ defmodule ParcelTest do
   end
 
   test "pages are clamped" do
-    assert %Parcel.Pagination {
+    assert %Parcel {
       items: Enum.to_list(6..10),
       page: 2,
       page_size: 5,
@@ -35,7 +35,7 @@ defmodule ParcelTest do
       total_items: 10
     } == query(1..10, %{page: 3, page_size: 5})
 
-    assert %Parcel.Pagination {
+    assert %Parcel {
       items: Enum.to_list(1..5),
       page: 1,
       page_size: 5,
@@ -49,7 +49,7 @@ defmodule ParcelTest do
   end
 
   test "minimum of 1 page size" do
-    assert %Parcel.Pagination {
+    assert %Parcel {
       items: [1],
       page: 1,
       page_size: 1,
@@ -59,7 +59,7 @@ defmodule ParcelTest do
   end
 
   test "maximum page size as specified in config" do
-    assert %Parcel.Pagination {
+    assert %Parcel {
       items: Enum.to_list(1..20),
       page: 1,
       page_size: 20,

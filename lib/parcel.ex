@@ -1,7 +1,7 @@
-defmodule Parcel.Pagination do
+defmodule Parcel do
   defstruct [:items, :page, :page_size, :total_pages, :total_items]
 
-  @type t :: %Parcel.Pagination {
+  @type t :: %Parcel {
     items: List.t,
     page: integer,
     page_size: integer,
@@ -27,7 +27,7 @@ defmodule Parcel.Pagination do
     page = clamp(page, 1, total_pages)
     offset = (page-1)*page_size
     page_items = Enum.slice(items, offset, page_size)
-    %Parcel.Pagination {
+    %Parcel {
       items: page_items,
       page: page,
       page_size: page_size,
